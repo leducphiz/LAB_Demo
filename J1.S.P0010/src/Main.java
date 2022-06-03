@@ -22,13 +22,13 @@ public class Main {
         int[] arr = new int[length];
 
         for (int i = 0; i < length; i++) {
-            arr[i] = r.nextInt(length + length) - length;
+            arr[i] = r.nextInt(length);
         }
 
         System.out.println(Arrays.toString(arr));
 
         List<Integer> index = linearSearch(arr, s);
-        System.out.println("Found " + s + " at index: " + index);
+        System.out.println("Found " + s + " at index: " + (index.isEmpty() ? "Not found! " : index));
 
     }
 
@@ -55,7 +55,6 @@ public class Main {
                 return result;
             } catch (NumberFormatException e) {
                 System.err.println("Please input number in range [" + min + ", " + max + "]");
-                System.out.print("Enter again: ");
             }
         }
     }
