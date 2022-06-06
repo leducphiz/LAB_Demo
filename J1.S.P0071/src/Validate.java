@@ -15,10 +15,7 @@ import java.util.Scanner;
  * @author PhiLe
  */
 public class Validate {
-
     static final Scanner sc = new Scanner(System.in);
-    static final String f = "^[0-9]{1,2}.[05][0]*|[0-9]{1,2}$";//[0-9]{1,2}.0
-
     public static int InputInt(String message) {
         int m;
         while (true) {
@@ -67,7 +64,7 @@ public class Validate {
             try {
                 System.out.print(msg);
                 String x = sc.nextLine();
-                if (x.matches(f)
+                if (x.matches("^[0-9]{1,2}.[05][0]*|[0-9]{1,2}$")
                         && Double.parseDouble(x) >= min
                         && Double.parseDouble(x) <= 17.5) {
                     tmp = Double.parseDouble(x);

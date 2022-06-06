@@ -20,27 +20,29 @@ public class Manager {
         String TaskType = Validate.InputTaskType("Task Type: ");
         String Date = Validate.InputDate("Date: ");
         double PlanFrom = Validate.InputPlan("From: ", 8.0);
-        double Planto = Validate.InputPlan("To: ", PlanFrom);
+        double PlanTo = Validate.InputPlan("To: ", PlanFrom);
         String Assignee = Validate.InputString("Assignee: ");
         String Reviewer = Validate.InputString("Reviewer: ");
-        list.add(new Task(ID, Name, TaskType, Date, PlanFrom, Planto, Assignee, Reviewer));
+        list.add(new Task(ID, Name, TaskType, Date, PlanFrom, PlanTo, Assignee, Reviewer));
         ID++;
         System.out.println("Add successful !");
     }
 
     public static void delTask(ArrayList<Task> list) {
-        System.out.println("---------Del Task----------");
-        while (true) {
-            int xID = Validate.InputInt("Enter ID: ");
-            Task task = Validate.getTaskByID(list, xID);
-            if (task == null) {
-                System.err.println("ID does not exist.");
-                continue;
-            } else {
-                list.remove(task);
-                System.out.println("Delete successful!");
-                
-                break;
+        if (list.isEmpty()){
+            System.out.println("Nothing to delete!");
+        }else{
+            System.out.println("---------Del Task----------");
+            while (true) {
+                int xID = Validate.InputInt("Enter ID: ");
+                Task task = Validate.getTaskByID(list, xID);
+                if (task == null) {
+                    System.err.println("ID does not exist.");
+                } else {
+                    list.remove(task);
+                    System.out.println("Delete successful!");
+                    break;
+                }
             }
         }
     }
@@ -49,13 +51,11 @@ public class Manager {
         System.out.println("-----------------------------------Task--------------------------------------");
         if (list.isEmpty()) {
             System.out.println("List is empty");
-            return;
         } else {
             System.out.printf("%-5s%-15s%-15s%-15s%-15s%-15s%-15s\n",
                     "ID", "Name", "Task Type", "Date", "Time", "Assign", "Reviewer");
             for (Task t : list) {
-                System.out.printf(
-                        "%-5d%-15s%-15s%-15s%-15.1f%-15s%-15s\n",
+                System.out.printf("%-5d%-15s%-15s%-15s%-15.1f%-15s%-15s\n",
                         t.getID(), t.getName(), t.getTaskTypeID(), t.getDate(), t.getTime(), t.getAssignee(), t.getReviewer());
             }
         }

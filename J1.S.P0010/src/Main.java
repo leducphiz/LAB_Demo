@@ -1,4 +1,4 @@
-
+        
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Main {
 
         int length = inputLength("Enter number of array: ");
 
-        int s = inputInRange(-length, length, "Enter search value: ");
+        int s = inputInRange(0, length, "Enter search value: ");
 
         int[] arr = new int[length];
 
@@ -33,7 +33,7 @@ public class Main {
     }
 
     public static List<Integer> linearSearch(int[] arr, int s) {
-        List<Integer> index = new ArrayList<Integer>();
+        List<Integer> index = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == s) {
                 index.add(i);
