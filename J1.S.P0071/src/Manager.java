@@ -29,10 +29,10 @@ public class Manager {
     }
 
     public static void delTask(ArrayList<Task> list) {
-        if (list.isEmpty()){
+        System.out.println("---------Del Task----------");
+        if (list.isEmpty()) {
             System.out.println("Nothing to delete!");
-        }else{
-            System.out.println("---------Del Task----------");
+        } else {
             while (true) {
                 int xID = Validate.InputInt("Enter ID: ");
                 Task task = Validate.getTaskByID(list, xID);
