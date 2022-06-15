@@ -32,6 +32,9 @@ public class Common {
         while (true) {
             System.out.print(m);
             String result = in.nextLine().trim();
+            if (Integer.parseInt(result) > 0){
+                continue;
+            }
             return result;
         }
     }

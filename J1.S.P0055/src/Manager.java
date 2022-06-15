@@ -57,7 +57,7 @@ public class Manager {
         }
         String name = Common.checkInputString("Enter name: ");
         String specialization = Common.checkInputString("Enter specialization: ");
-        String availability = Common.inputIntOrEmpty("Enter availability: ");
+        String availability = Common.checkInputString("Enter availability: ");
 
         //check change info
         if (!Common.checkChangeInfo(doctor, name, specialization, availability)) {
