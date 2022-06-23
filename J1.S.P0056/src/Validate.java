@@ -17,32 +17,6 @@ public class Validate {
         }
     }
 
-    public static int InputInt(String m) {
-        while (true) {
-            try {
-                System.out.print(m);
-                int result = Integer.parseInt(sc.nextLine().trim());
-                if (result > 0) {
-                    return result;
-                }
-            } catch (NumberFormatException e) {
-            }
-        }
-    }
-    
-    public static double InputDouble(String m) {
-        while (true) {
-            try {
-                System.out.print(m);
-                double result = Double.parseDouble(sc.nextLine().trim());
-                if (result > 0) {
-                    return result;
-                }
-            } catch (NumberFormatException e) {
-            }
-        }
-    }
-
     public static int checkRangeInt(int min, int max, String msg, String err) {
         while (true) {
             try {

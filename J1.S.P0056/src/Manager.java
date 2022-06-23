@@ -49,7 +49,6 @@ public class Manager {
     static void updateWorker(ArrayList<Worker> wList, ArrayList<SalaryHistory> shList, int mode) {
         if (wList.isEmpty()) {
             System.err.println("List empty.");
-            return;
         } else {
             String code = "";
             Worker w = null;
@@ -59,16 +58,17 @@ public class Manager {
             if (w != null) {
                 if (mode == 1) {
                     //Up salary
-                    update = Validate.checkRangeDouble(w.getSalary(), Double.MAX_VALUE, "Salary: ", "Must be greater than current salary.");
-                    shList.add(new SalaryHistory(w.getCode(), w.getName(), w.getAge(), update, "UP", date, w.getLocation()));
+                    update = Validate.checkRangeDouble(0, Double.MAX_VALUE, "Salary: ", "Must be greater than current salary.");
+                    w.setSalary(update + w.getSalary());
+                    shList.add(new SalaryHistory(w.getCode(), w.getName(), w.getAge(), w.getSalary(), "UP", date, w.getLocation()));
                     System.out.println("[UP} Done");
                 } else if (mode == 2) {
                     //Down salary
                     update = Validate.checkRangeDouble(0, w.getSalary(), "Salary: ", "Must be smaller than current salary.");
-                    shList.add(new SalaryHistory(w.getCode(), w.getName(), w.getAge(), update, "DOWN", date, w.getLocation()));
+                    w.setSalary(w.getSalary() - update);
+                    shList.add(new SalaryHistory(w.getCode(), w.getName(), w.getAge(), w.getSalary(), "DOWN", date, w.getLocation()));
                     System.out.println("[DOWN] Done");
                 };
-                w.setSalary(update);
 
             } else {
                 System.out.println("code doesn't exist!");
@@ -79,17 +79,14 @@ public class Manager {
     static void display(ArrayList<SalaryHistory> shList) {
         if (shList.isEmpty()) {
             System.err.println("List empty.");
-            return;
         } else {
             System.out.printf("%-5s%-15s%-10s%-10s%-10s%-20s\n", "Code", "Name", "Age", "Salary", "Status", "Date");
             Collections.sort(shList);
-            //print history from first to last list
             for (SalaryHistory s : shList) {
                 System.out.printf("%-5s%-15s%-10d%-10.1f%-10s%-20s\n", s.getCode(),
                         s.getName(), s.getAge(), s.getSalary(),
                         s.getStatus(), s.getDate());
             }
         }
-
     }
 }
